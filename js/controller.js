@@ -1,4 +1,7 @@
 // Funcao utilizada para verificar se existe algum campo vazio
+
+var clientesGeral = [];
+
 function verificarObrigatorios(campos){
 //Ela recebe apenas os campos obrigatorios e verifica se o valor esta vazio
 	let verificado = true;
@@ -124,13 +127,34 @@ function enviarFormulario(evt, campos) {
 
     if(verifica){
     	if(autenticaCPF(cpf)){
-			document.getElementById('alertaerror').style.display = "none";	
+			document.getElementById('alertaerrorcpf').style.display = "none";	
 			document.getElementById('alertasucesso').style.display = "block";
+			document.getElementById('alertaerror').style.display = "none";
+				document.getElementById('nome').value = '';
+				document.getElementById('cpf').value = '';
+				document.getElementById('rg').value = '';
+				document.getElementById('sexo').value = '';
+				document.getElementById('cep').value = '';
+				document.getElementById('endereco').value = '';
+				document.getElementById('numero').value = '';
+				document.getElementById('bairro').value = '';
+				document.getElementById('cidade').value = '';
+				document.getElementById('estado').value = '';
+				document.getElementById('telefone').value = '';
+				document.getElementById('celular').value = '';
+				clientesGeral.push(dadosclie);
+				console.log(clientesGeral);
 		}
 		else{
-			document.getElementById('alertaerror').style.display = "block";
+			document.getElementById('alertaerrorcpf').style.display = "block";
 			document.getElementById('alertasucesso').style.display = "none";
+			document.getElementById('alertaerror').style.display = "none";
 		}
-    }	
+    }
+	else{
+		document.getElementById('alertaerror').style.display = "block";
+		document.getElementById('alertaerrorcpf').style.display = "none";	
+		document.getElementById('alertasucesso').style.display = "none";
+	}	
 	evt.preventDefault();
 }

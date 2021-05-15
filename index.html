@@ -16,7 +16,8 @@
 			
 			<form id="formulario" autocomplete="off">
 				<div class="alerta sucesso" id="alertasucesso" style="display: none">Parabéns! Os dados foram enviados com sucesso.</div>
-				<div class="alerta error" id="alertaerror" style="display: none">Oops, CPF não é válido!</div>
+				<div class="alerta error" id="alertaerrorcpf" style="display: none">Oops, CPF não é válido!</div>
+				<div class="alerta error" id="alertaerror" style="display: none">Oops, Falta algum campo!</div>
 				<fieldset>
 					<fieldset class="grupo">
 						<div class="campo">
@@ -87,9 +88,32 @@
 				</fieldset>				
 			</form>
 		</div>
+		<div id="cadastrados" class="cadastrados" style="display: none">
+			<table>
+				<tr>
+				  <th>Nome</th>
+				  <th>CPF</th>
+				  <th>RG</th>
+				  <th>Sexo</th>
+				  <th>CEP</th>
+				  <th>Endereço</th>
+				  <th>Número</th>
+				  <th>Bairro</th>
+				  <th>Cidade</th>
+				  <th>Estado</th>
+				  <th>Telefone Fixo</th>
+				  <th>Celular</th>
+				</tr>
+				<!--<tr>
+				  <td>Peter</td>
+				  <td>Grifdfgfddfdfhdfhdhdhdfhfin</td>
+				  <td>$100</td>
+				</tr>-->
+				
+			  </table>
+		</div>
 	</div>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="js/aba.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
-
 </body>
 </html>
