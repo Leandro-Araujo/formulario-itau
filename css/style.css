@@ -176,3 +176,7 @@ span.avisorestricted{
     color: #FFF;
     background-color: #5d9cec;
    }
+   
+table{ 
+    margin: 1em;
+}

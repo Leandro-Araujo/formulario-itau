@@ -102,6 +102,37 @@ function verificaCEP(cep){
 	}
 }
 
+function escreverTabela(){
+	let i = clientesGeral.length - 1;
+
+	let cliente = document.createElement("tr");
+
+	let nomeCliente = document.createElement("td");
+	let cpfCliente = document.createElement("td");
+	let sexoCliente = document.createElement("td");
+	let cidadeCliente = document.createElement("td");
+	let estadoCliente = document.createElement("td");
+	let celularCliente = document.createElement("td");
+
+	cliente.appendChild(nomeCliente);
+	cliente.appendChild(cpfCliente);
+	cliente.appendChild(sexoCliente);
+	cliente.appendChild(cidadeCliente);
+	cliente.appendChild(estadoCliente);
+	cliente.appendChild(celularCliente);
+
+	nomeCliente.textContent = clientesGeral[i].nome;
+	cpfCliente.textContent = clientesGeral[i].cpf;
+	sexoCliente.textContent = clientesGeral[i].sexo;
+	cidadeCliente.textContent = clientesGeral[i].cidade;
+	estadoCliente.textContent = clientesGeral[i].estado;
+	celularCliente.textContent = clientesGeral[i].celular;
+
+
+
+	document.getElementById('tablecad').appendChild(cliente);
+}
+
 function enviarFormulario(evt, campos) {
     let nome =     document.getElementById('nome').value;
     let cpf =      document.getElementById('cpf').value;
@@ -144,6 +175,7 @@ function enviarFormulario(evt, campos) {
 				document.getElementById('celular').value = '';
 				clientesGeral.push(dadosclie);
 				console.log(clientesGeral);
+				escreverTabela();
 		}
 		else{
 			document.getElementById('alertaerrorcpf').style.display = "block";
