@@ -49,8 +49,57 @@ function verificaCPF(cpf){
 
 }
 
-function enviarFormulario(evt, campos) {
+function buscaCEP(cep){
+	estado = {
+		'AC': 'Acre',    'AL': 'Alagoas',    'AP': 'Amapá',    'AM': 'Amazonas',    'BA': 'Bahia',
+    'CE': 'Ceará',    'DF': 'Distrito Federal',    'ES': 'Espírito Santo',    'GO': 'Goiás',
+    'MA': 'Maranhão',    'MT': 'Mato Grosso',    'MS': 'Mato Grosso do Sul',    'MG': 'Minas Gerais',
+    'PA': 'Pará',    'PB': 'Paraíba',    'PR': 'Paraná',    'PE': 'Pernambuco',    'PI': 'Piauí',
+    'RJ': 'Rio de Janeiro',    'RN': 'Rio Grande do Norte',    'RS': 'Rio Grande do Sul',
+    'RO': 'Rondônia',    'RR': 'Roraima',    'SC': 'Santa Catarina',    'SP': 'São Paulo',
+    'SE': 'Sergipe',    'TO': 'Tocantins'	};
+	let url = 'http://viacep.com.br/ws/' + cep.value + '/json';
+	let xhr = new XMLHttpRequest();
+	xhr.open('GET', url, true);
+	xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if (xhr.status = 200){
+				if(!JSON.parse(xhr.responseText).erro){					
+					document.getElementById('endereco').value = JSON.parse(xhr.responseText).logradouro;
+					document.getElementById('bairro').value = JSON.parse(xhr.responseText).bairro;
+					document.getElementById('cidade').value = JSON.parse(xhr.responseText).localidade;
+					document.getElementById('estado').value = estado[JSON.parse(xhr.responseText).uf];
 
+				}
+				else{
+					document.getElementById('endereco').value = '';
+					document.getElementById('bairro').value = '';
+					document.getElementById('cidade').value = '';
+					document.getElementById('estado').value = '';
+				}
+			}
+			//console.log(JSON.parse(xhr.responseText));
+                //preencheCampos(JSON.parse(xhr.responseText));
+        }
+    }
+    xhr.send();
+}
+
+function verificaCEP(cep){
+	let padraoCEP = /[0-9]{8}/;
+	var compara = padraoCEP.exec(cep.value);
+	if(!compara){
+		document.getElementById('avisocpf').classList.remove('aviso');
+		document.getElementById('avisocpf').classList.add('avisorestricted');
+	}
+	else{
+		buscaCEP(cep);
+		document.getElementById('avisocpf').classList.add('aviso');
+		document.getElementById('avisocpf').classList.remove('avisorestricted');
+	}
+}
+
+function enviarFormulario(evt, campos) {
     let nome =     document.getElementById('nome').value;
     let cpf =      document.getElementById('cpf').value;
     let rg =       document.getElementById('rg').value;
@@ -63,11 +112,9 @@ function enviarFormulario(evt, campos) {
     let estado =   document.getElementById('estado').value;
     let telefone = document.getElementById('telefone').value;
     let celular =  document.getElementById('celular').value;
-
     let dadosclie = {
     	nome, cpf, rg, sexo, cep, endereco, numero, bairro, cidade, estado, telefone, celular
-    }
-    
+    }    
     let verifica = verificarObrigatorios(
     	[{nome: dadosclie.nome}, 
     	{cpf:dadosclie.cpf}, 
@@ -75,16 +122,15 @@ function enviarFormulario(evt, campos) {
     	{numero: dadosclie.numero}, 
     	{celular:dadosclie.celular}]);
 
-
     if(verifica){
     	if(autenticaCPF(cpf)){
 			document.getElementById('alertaerror').style.display = "none";	
+			document.getElementById('alertasucesso').style.display = "block";
 		}
 		else{
 			document.getElementById('alertaerror').style.display = "block";
+			document.getElementById('alertasucesso').style.display = "none";
 		}
-    }
-	
+    }	
 	evt.preventDefault();
-
 }

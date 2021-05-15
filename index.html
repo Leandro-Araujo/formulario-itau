@@ -15,6 +15,7 @@
 		<div id="home" class="home" style="display: block">
 			
 			<form id="formulario" autocomplete="off">
+				<div class="alerta sucesso" id="alertasucesso" style="display: none">Parabéns! Os dados foram enviados com sucesso.</div>
 				<div class="alerta error" id="alertaerror" style="display: none">Oops, CPF não é válido!</div>
 				<fieldset>
 					<fieldset class="grupo">
@@ -43,8 +44,8 @@
 					</div>
 					<fieldset class="grupo">
 						<div class="campo">
-							<label for="cep">CEP</label>
-							<input type="text" id="cep" name="cep" style="width: 20em" value="">
+							<label for="cep">CEP <span id="avisocpf" class="aviso">só numeros. ex: 65999999</span></label>
+							<input type="text" id="cep" name="cep" onblur="verificaCEP(this)" style="width: 20em" value=""  maxlength="8" >
 						</div>
 						<div class="campo">
 							<label for="endereco">Endereço <span class="obrigatorio" id="spanendereco">*</span></label>
@@ -83,7 +84,7 @@
 					</fieldset>
 					<p>* Estes campos são obrigatórios</p>
 					<button type="submit" name="submit" class="botao" onclick="enviarFormulario(event, formulario)">Enviar</button>
-				</fieldset>
+				</fieldset>				
 			</form>
 		</div>
 	</div>
