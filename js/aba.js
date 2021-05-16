@@ -7,7 +7,5 @@ function openAba(evt, aba) {
 		document.getElementById('home').style.display = "none";
 		document.getElementById('cadastrados').style.display = "block";
 	}
-
 	evt.preventDefault();
-
 }

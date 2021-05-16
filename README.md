@@ -39,3 +39,21 @@ Este site foi feito utilizando apenas JavaScript, CSS e HTML.
 - js
   - aba.js
   - controller.js
+
+### Vamos entender alguns códigos importantes
+
+O código abaixo tem o objetivo de trocar as opções do menu sem que com isso a tela seja atualizada, imitando uma tabs:
+
+```javascript
+function openAba(evt, aba) {
+	if(aba == 'Home'){
+		document.getElementById('home').style.display = "block";
+		document.getElementById('cadastrados').style.display = "none";
+	}
+	else{
+		document.getElementById('home').style.display = "none";
+		document.getElementById('cadastrados').style.display = "block";
+	}
+	evt.preventDefault();
+}
+```
