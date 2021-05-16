@@ -2,17 +2,15 @@
 
 var clientesGeral = [];
 
-function verificarObrigatorios(campos){
 //Ela recebe apenas os campos obrigatorios e verifica se o valor esta vazio
+function verificarObrigatorios(campos){
 	let verificado = true;
 	for (var i = campos.length - 1; i >= 0; i--) {
 		if (Object.values(campos[i])[0] == '') {
 			document.getElementById("span"+Object.keys(campos[i])[0]).innerHTML="* campo obrigatorio";  
 			verificado = false;
 		}
-		else{
-			document.getElementById("span"+Object.keys(campos[i])[0]).innerHTML="*";		
-		}
+		else	document.getElementById("span"+Object.keys(campos[i])[0]).innerHTML="*";		
 	}	
 	return verificado;
 }
@@ -81,8 +79,6 @@ function buscaCEP(cep){
 					document.getElementById('estado').value = '';
 				}
 			}
-			//console.log(JSON.parse(xhr.responseText));
-                //preencheCampos(JSON.parse(xhr.responseText));
         }
     }
     xhr.send();
@@ -133,6 +129,14 @@ function escreverTabela(){
 	document.getElementById('tablecad').appendChild(cliente);
 }
 
+//Função para verificar se o cliente cadastrado já existe
+function verificaClienteExiste(novoCliente){
+	if(clientesGeral.length == 0)	return false;
+	for(var i = 0; i < clientesGeral.length; i++)
+		if(novoCliente == clientesGeral[i].cpf) return true;
+	return false;
+}
+
 function enviarFormulario(evt, campos) {
     let nome =     document.getElementById('nome').value;
     let cpf =      document.getElementById('cpf').value;
@@ -149,18 +153,22 @@ function enviarFormulario(evt, campos) {
     let dadosclie = {
     	nome, cpf, rg, sexo, cep, endereco, numero, bairro, cidade, estado, telefone, celular
     }    
-    let verifica = verificarObrigatorios(
+    let verificaObg = verificarObrigatorios(
     	[{nome: dadosclie.nome}, 
     	{cpf:dadosclie.cpf}, 
     	{endereco: dadosclie.endereco}, 
     	{numero: dadosclie.numero}, 
     	{celular:dadosclie.celular}]);
 
-    if(verifica){
+    if(verificaObg){
     	if(autenticaCPF(cpf)){
-			document.getElementById('alertaerrorcpf').style.display = "none";	
-			document.getElementById('alertasucesso').style.display = "block";
-			document.getElementById('alertaerror').style.display = "none";
+			if(!verificaClienteExiste(cpf)){
+				document.getElementById('alertasucesso').style.display = "block";
+				setInterval(function(){
+					document.getElementById('alertasucesso').style.display = "none";
+				}, 4000);	
+				document.getElementById('alertaerrorcpf').style.display = "none";	
+				document.getElementById('alertaerror').style.display = "none";
 				document.getElementById('nome').value = '';
 				document.getElementById('cpf').value = '';
 				document.getElementById('rg').value = '';
@@ -174,17 +182,31 @@ function enviarFormulario(evt, campos) {
 				document.getElementById('telefone').value = '';
 				document.getElementById('celular').value = '';
 				clientesGeral.push(dadosclie);
-				console.log(clientesGeral);
 				escreverTabela();
+			}else{
+				document.getElementById('alertaerrojaexiste').style.display = "block";
+			setInterval(function(){
+				document.getElementById('alertaerrojaexiste').style.display = "none";
+			}, 4000);			
+			document.getElementById('alertasucesso').style.display = "none";
+			document.getElementById('alertaerror').style.display = "none";
+			}
+
 		}
 		else{
 			document.getElementById('alertaerrorcpf').style.display = "block";
+			setInterval(function(){
+				document.getElementById('alertaerrorcpf').style.display = "none";
+			}, 4000);			
 			document.getElementById('alertasucesso').style.display = "none";
 			document.getElementById('alertaerror').style.display = "none";
 		}
     }
 	else{
 		document.getElementById('alertaerror').style.display = "block";
+		setInterval(function(){
+			document.getElementById('alertaerror').style.display = "none";
+		}, 4000);	
 		document.getElementById('alertaerrorcpf').style.display = "none";	
 		document.getElementById('alertasucesso').style.display = "none";
 	}	

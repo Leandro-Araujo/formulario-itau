@@ -18,11 +18,12 @@
 				<div class="alerta sucesso" id="alertasucesso" style="display: none">Parabéns! Os dados foram enviados com sucesso.</div>
 				<div class="alerta error" id="alertaerrorcpf" style="display: none">Oops, CPF não é válido!</div>
 				<div class="alerta error" id="alertaerror" style="display: none">Oops, Falta algum campo!</div>
+				<div class="alerta error" id="alertaerrojaexiste" style="display: none">Oops, Cliente já existe</div>
 				<fieldset>
 					<fieldset class="grupo">
 						<div class="campo">
 							<label for="nome">Nome <span class="obrigatorio" id="spannome">*</span></label>
-							<input type="text" id="nome" name="nome" style="width: 20em" value="" required>
+							<input type="text" id="nome" name="nome" style="width: 20em" value="" required placeholder="insira seu nome">
 						</div>
 						<div class="campo">
 							<label for="cpf">CPF <span id="aviso" class="aviso">só numeros. ex: 11122233399</span> <span class="obrigatorio" id="spancpf">*</span></label>
@@ -30,7 +31,7 @@
 						</div>
 						<div class="campo">
 							<label for="rg">RG</label>
-							<input type="text" id="rg" name="rg" style="width: 20em" value="">
+							<input type="text" id="rg" name="rg" style="width: 20em" value="" placeholder="insira seu rg">
 						</div>
 					</fieldset>
 
@@ -46,41 +47,41 @@
 					<fieldset class="grupo">
 						<div class="campo">
 							<label for="cep">CEP <span id="avisocpf" class="aviso">só numeros. ex: 65999999</span></label>
-							<input type="text" id="cep" name="cep" onblur="verificaCEP(this)" style="width: 20em" value=""  maxlength="8" >
+							<input type="text" id="cep" name="cep" onblur="verificaCEP(this)" style="width: 20em" value=""  maxlength="8" placeholder="insira seu CEP (somente números)">
 						</div>
 						<div class="campo">
 							<label for="endereco">Endereço <span class="obrigatorio" id="spanendereco">*</span></label>
-							<input type="text" id="endereco" name="endereco" style="width: 20em" value="" required>
+							<input type="text" id="endereco" name="endereco" style="width: 20em" value="" required placeholder="insira seu endereço">
 						</div>
 					</fieldset>
 					<fieldset class="grupo">
 						<div class="campo">
 							<label for="numero">Número <span class="obrigatorio" id="spannumero">*</span></label>
-							<input type="text" id="numero" name="numero" style="width: 20em" value="" required>
+							<input type="text" id="numero" name="numero" style="width: 20em" value="" required placeholder="insira o número da casa">
 						</div>
 						<div class="campo">
 							<label for="bairro">Bairro</label>
-							<input type="text" id="bairro" name="bairro" style="width: 20em" value="">
+							<input type="text" id="bairro" name="bairro" style="width: 20em" value="" placeholder="insira seu bairro">
 						</div>
 					</fieldset>
 					<fieldset class="grupo">
 						<div class="campo">
 							<label for="cidade">Cidade</label>
-							<input type="text" id="cidade" name="cidade" style="width: 20em" value="">
+							<input type="text" id="cidade" name="cidade" style="width: 20em" value="" placeholder="insira sua cidade">
 						</div>
 						<div class="campo">
 							<label for="estado">Estado</label>
-							<input type="text" id="estado" name="estado" style="width: 20em" value="">
+							<input type="text" id="estado" name="estado" style="width: 20em" value="" placeholder="insira seu estado">
 						</div>
 					</fieldset>
 					<fieldset class="grupo">
 						<div class="campo">
-							<label for="telefone">Telefone Fixo</label>
-							<input type="text" id="telefone" name="telefone" style="width: 20em" value="">
+							<label for="telefone">Telefone Fixo <span id="avisocpf" class="aviso">ddd e telefone ex: 9955559999</span></label>
+							<input type="tel" id="telefone" name="telefone" style="width: 20em" value=""  maxlength="10" placeholder="seu telefone com ddd (somente números)">
 						</div>
 						<div class="campo">
-							<label for="celular">Celular <span class="obrigatorio" id="spancelular">*</span></label>
-							<input type="text" id="celular" name="celular" style="width: 20em" value="" required>
+							<label for="celular">Celular <span id="avisocpf" class="aviso">ddd e celular ex: 99555599999</span> <span class="obrigatorio" id="spancelular">*</span></label>
+							<input type="tel" id="celular" name="celular" style="width: 20em" value=""  maxlength="11" required placeholder="seu celular com ddd(somente números)">
 						</div>
 					</fieldset>
 					<p>* Estes campos são obrigatórios</p>
