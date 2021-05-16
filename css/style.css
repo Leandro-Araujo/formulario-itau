@@ -1,9 +1,9 @@
 /* CSS do menu */
-
+/* background-color:#EDEDED; */
 #menu ul {
     padding:0px;
     margin:0px;
-    background-color:#EDEDED;
+    background-color:#e98534;
     list-style:none;
 }
 
@@ -14,15 +14,15 @@
     display: inline-block;
 
     /* visual do link */
-    background-color:#EDEDED;
-    color: #333;
+    background-color:#e98534;
+    color: #EDEDED;
     text-decoration: none;
-    border-bottom:3px solid #EDEDED;
+    border-bottom:3px solid #e98534;
 }
 
 #menu ul li a:hover {
-    background-color:#D6D6D6;
-    color: #6D6D6D;
+    background-color:#e98534;
+    color: #EDEDED;
     border-bottom:3px solid #EA0000;
 }
 
@@ -93,7 +93,7 @@ fieldset .grupo .campo {
 
 .botao {
     font-size: 1.5em;
-    background: #F90;
+    background: #e98534;
     border: 0;
     margin-bottom: 1em;
     color: #FFF;
@@ -103,7 +103,7 @@ fieldset .grupo .campo {
 }
 
 .botao:hover {
-    background: #FB0;
+    background: #e98534;
     box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
     text-shadow: none;
 }
