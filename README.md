@@ -27,7 +27,15 @@ Um pequeno formulario para o projeto itau tech.
 
 Lista das pessoas já cadastradas.
 
-### Tecnologias
+## Tecnologias
 
 Este site foi feito utilizando apenas JavaScript, CSS e HTML.
 
+### Estrutura Básica
+
+- index.html
+- css
+  - style.css
+- js
+  - aba.js
+  - controller.js
