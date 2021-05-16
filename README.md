@@ -8,21 +8,26 @@ Um pequeno formulario para o projeto itau tech.
 
 É onde tem o formulario e é possível cadastrar as pessoas.
 
-#### Formulário tem os campos
+#### O Formulário tem os seguintes campos:
 
-* Nome
-* CPF
+* Nome  _Este ítem é obrigatório_
+* CPF  _Este ítem é obrigatório_
 * RG
 * Sexo
-* Endereco
-* Numero
+* Endereco  _Este ítem é obrigatório_
+* Numero  _Este ítem é obrigatório_
 * Bairro
 * Cidade
 * Estado
 * CEP
 * Telefone Fixo
-* CElular
+* CElular  _Este ítem é obrigatório_
 
 ### Cadastradados
 
 Lista das pessoas já cadastradas.
+
+### Tecnologias
+
+Este site foi feito utilizando apenas JavaScript, CSS e HTML.
+
