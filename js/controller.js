@@ -47,7 +47,6 @@ function verificaCPF(cpf){
 		document.getElementById('aviso').classList.add('aviso');
 		document.getElementById('aviso').classList.remove('avisorestricted');
 	}
-
 }
 
 function buscaCEP(cep){
@@ -123,8 +122,6 @@ function escreverTabela(){
 	cidadeCliente.textContent = clientesGeral[i].cidade;
 	estadoCliente.textContent = clientesGeral[i].estado;
 	celularCliente.textContent = clientesGeral[i].celular;
-
-
 
 	document.getElementById('tablecad').appendChild(cliente);
 }
