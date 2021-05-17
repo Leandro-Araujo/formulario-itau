@@ -159,7 +159,7 @@ function buscaCEP(cep){
 }
 ```
 
-No meu código também precisei por verificar se o cliente já estava cadastrado, usei como id o cpf do mesmo:
+No meu código também prezei por verificar se o cliente já estava cadastrado, usei como id o cpf do mesmo:
 
 ```javascript
 function verificaClienteExiste(novoCliente){
